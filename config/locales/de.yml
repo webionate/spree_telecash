@@ -1,0 +1,8 @@
+---
+de:
+  telecash:
+    settings:
+      url: "Telecash URL"
+      store: "Telecash Store Name"
+      secret: "Shared Secret"
+      telecash_settings: "Telecash Einstellungen"
