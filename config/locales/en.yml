@@ -1,12 +1,12 @@
 ---
-de:
+en:
   telecash:
-    choose_telecash_payment_method: Bitte Zahlungsart wählen
+    choose_telecash_payment_method: Please select your payment method
     settings:
       url: "Telecash URL"
       store: "Telecash Store Name"
       secret: "Shared Secret"
-      telecash_settings: "Telecash Einstellungen"
+      telecash_settings: "Telecash Settings"
     payment_method:
       a: American Express
       c: Diners

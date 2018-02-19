@@ -1,31 +1,28 @@
--if needs_telecash_payment?(@order, payment_method)
+- if needs_telecash_payment?(@order, payment_method)
 
-  %p= "Bitte Zahlungsart auswählen:"
+  %p
+    = "#{t('telecash.choose_telecash_payment_method')}:"
 
-  .list-group
+  .list-group#telecash-payment-method-selection
     .list-group-item
       = radio_button_tag "telecash_payment_method", telecash_payment_link(@order, payment_method, "V"), true, id: "telecash_payment_method_v"
-      %label= "Visa"
+      = label_tag "telecash_payment_method_v", t("telecash.payment_method.v")
     .list-group-item
       = radio_button_tag "telecash_payment_method", telecash_payment_link(@order, payment_method, "M"), false, id: "telecash_payment_method_m"
-      %label= "MasterCard"
+      %label= t("telecash.payment_method.m")
     .list-group-item
       = radio_button_tag "telecash_payment_method", telecash_payment_link(@order, payment_method, "A"), false, id: "telecash_payment_method_a"
-      %label= "American Express"
+      %label= t("telecash.payment_method.a")
     .list-group-item
       = radio_button_tag "telecash_payment_method", telecash_payment_link(@order, payment_method, "paypal"), false, id: "telecash_payment_method_paypal"
-      %label= "Paypal"
+      %label= t("telecash.payment_method.paypal")
     .list-group-item
       = radio_button_tag "telecash_payment_method", telecash_payment_link(@order, payment_method, "sofort"), false, id: "telecash_payment_method_sofort"
-      %label= "SOFORT"
+      %label= t("telecash.payment_method.sofort")
 
-  =link_to "Telecash", telecash_payment_link(@order, payment_method, "dummy"), method: :post
+  =# link_to "Telecash", telecash_payment_link(@order, payment_method, "dummy"), method: :post
 
-
-
-  =link_to "Telecash Success", telecash_success_link(@order), method: :post
-
+  = link_to "Telecash Success", telecash_success_link(@order), method: :post
 
 -else
   %p="Telecash Zahlung erfolgreich, bitte weitergehen."
-
