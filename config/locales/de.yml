@@ -1,7 +1,7 @@
 ---
 de:
   telecash:
-    choose_telecash_payment_method: Bitte Zahlungsart wählen
+    no_payment_required: Telecash Zahlung erfolgreich. Bitte klicken Sie auf 'Weiter'.
     settings:
       url: "Telecash URL"
       store: "Telecash Store Name"

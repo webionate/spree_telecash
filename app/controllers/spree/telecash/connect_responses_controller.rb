@@ -20,7 +20,7 @@ module Spree
     private
 
     def telecash_payment_method
-      Spree::PaymentMethod.where(type: Spree::Gateway::TelecashCreditcard.name).first
+      Spree::PaymentMethod.where(type: Spree::Gateway::Telecash.name).first
     end
   end
 end

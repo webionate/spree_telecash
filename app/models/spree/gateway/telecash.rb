@@ -4,10 +4,10 @@ module Spree
     preference :url, :string, default: "https://test.ipg-online.com/connect/gateway/processing"
     preference :store, :string, default: ""
     preference :secret, :string, default: ""
-    preference :payment_methods, :string, default: "visa mastercard american_express paypal sofort"
+    preference :payment_methods, :string, default: "v m paypal sofort"
 
     def method_type
-      'telecash'
+      "telecash"
     end
 
     def payment_source_class
@@ -34,7 +34,5 @@ module Spree
     def capture(amount, transaction_id, _gateway_options)
       Rails.logger.info "Received call to capture"
     end
-
-
   end
 end
