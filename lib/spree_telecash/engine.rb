@@ -19,9 +19,7 @@ module SpreeTelecash
 
     initializer 'spree.telecash.payment_methods', after: 'spree.register.payment_methods' do |app|
       app.config.spree.payment_methods += [
-        Spree::Gateway::TelecashCreditcard,
-        Spree::Gateway::TelecashPaypal,
-        Spree::Gateway::TelecashSofort,
+        Spree::Gateway::Telecash,
       ]
     end
   end

@@ -22,8 +22,10 @@ Gem::Specification.new do |s|
   s.requirements << 'none'
 
   spree_version = '>= 3.1.0', '< 4.0'
+  s.add_dependency "activemerchant"
   s.add_dependency 'spree_core', spree_version
   s.add_dependency 'spree_backend', spree_version
   s.add_dependency 'spree_frontend', spree_version
   s.add_dependency 'spree_extension'
+  s.add_dependency "coffee-script"
 end

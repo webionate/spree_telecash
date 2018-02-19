@@ -1,21 +1,36 @@
-require 'bundler'
-Bundler::GemHelper.install_tasks
-
-require 'rspec/core/rake_task'
-require 'spree/testing_support/extension_rake'
-
-RSpec::Core::RakeTask.new
-
-task :default do
-  if Dir['spec/dummy'].empty?
-    Rake::Task[:test_app].invoke
-    Dir.chdir('../../')
-  end
-  Rake::Task[:spec].invoke
+begin
+  require 'bundler/setup'
+rescue LoadError
+  puts 'You must `gem install bundler` and `bundle install` to run rake tasks'
 end
 
-desc 'Generates a dummy app for testing'
-task :test_app do
-  ENV['LIB_NAME'] = 'spree_telecash'
-  Rake::Task['extension:test_app'].invoke
+require 'rdoc/task'
+
+RDoc::Task.new(:rdoc) do |rdoc|
+  rdoc.rdoc_dir = 'rdoc'
+  rdoc.title    = 'SpreeTelecash'
+  rdoc.options << '--line-numbers'
+  rdoc.rdoc_files.include('README.md')
+  rdoc.rdoc_files.include('lib/**/*.rb')
 end
+
+APP_RAKEFILE = File.expand_path("../test/dummy/Rakefile", __FILE__)
+load 'rails/tasks/engine.rake'
+
+
+load 'rails/tasks/statistics.rake'
+
+
+
+require 'bundler/gem_tasks'
+
+require 'rake/testtask'
+
+Rake::TestTask.new(:test) do |t|
+  t.libs << 'test'
+  t.pattern = 'test/**/*_test.rb'
+  t.verbose = false
+end
+
+
+task default: :test
