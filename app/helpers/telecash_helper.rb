@@ -64,6 +64,10 @@ module TelecashHelper
     )
   end
 
+  def telecash_payment_methods(payment_method)
+    payment_method.preferences[:payment_methods].split(" ").map(&:downcase)
+  end
+
   private
 
   def build_hash(*params)

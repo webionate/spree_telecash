@@ -4,6 +4,7 @@ module Spree
     preference :url, :string, default: "https://test.ipg-online.com/connect/gateway/processing"
     preference :store, :string, default: ""
     preference :secret, :string, default: ""
+    preference :payment_methods, :string, default: "visa mastercard american_express paypal sofort"
 
     def method_type
       'telecash'
