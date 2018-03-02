@@ -10,15 +10,15 @@ module TelecashHelper
       timezone: "Europe/Berlin",
       txndatetime: formatted_date,
       hash_algorithm: "SHA256",
-      hash: build_hash(store_id, formatted_date, "13.00", "978", payment_method.preferences[:secret]),
+      hash: build_hash(store_id, formatted_date, order.total.to_s, "978", payment_method.preferences[:secret]),
       storename: store_id,
       mode: "payonly",
-      chargetotal: "13.00",
+      chargetotal: order.total.to_s,
       currency: "978",
       oid: order.number,
       paymentMethod: telecash_payment_method,
-      responseSuccessURL: "https://requestb.in/17w0evk1",
-      responseFailURL: "https://requestb.in/17w0evk1",
+      responseSuccessURL: telecash_connect_response_url,
+      responseFailURL: telecash_connect_response_url,
     )
     uri.to_s
   end
