@@ -1,19 +1,18 @@
 module Telecash
   class Message
-
     attr_reader :namespace_prefix
 
     IDENTIFIER_BY_TRANSACTION_TYPE = {
       "postAuth" => "OrderId",
       "return" => "OrderId",
       "void" => "IpgTransactionId",
-    }
+    }.freeze
 
     def initialize(namespace_prefix: "")
       @namespace_prefix = namespace_prefix
     end
 
-    def build(transaction, transaction_id, amount=nil)
+    def build(transaction, transaction_id, amount = nil)
       Hash.new.tap do |hash|
         hash[prefixed("Transaction")] = build_transaction(transaction, transaction_id, amount)
       end

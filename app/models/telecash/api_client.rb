@@ -1,9 +1,8 @@
 module Telecash
   class ApiClient
+    NAMESPACE_PREFIX = "v1".freeze
 
-    NAMESPACE_PREFIX = "v1"
-
-    NAMESPACES = { "xmlns:#{NAMESPACE_PREFIX}" => "http://ipg-online.com/ipgapi/schemas/v1" }
+    NAMESPACES = { "xmlns:#{NAMESPACE_PREFIX}" => "http://ipg-online.com/ipgapi/schemas/v1" }.freeze
 
     attr_reader :wsdl, :user, :password, :certificate, :key, :key_password
     def initialize(wsdl, user, password, certificate, key, key_password)

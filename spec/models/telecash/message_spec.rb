@@ -7,23 +7,31 @@ module Telecash
 
       context "return message" do
         it "has the expected structure" do
-          expect(described_class.new.build("return", "123456789", 12.99)).to eq expect_return_message("return", "123456789", 12.99)
+          expect(described_class.new.build("return", "123456789", 12.99)).to eq(
+            expect_return_message("return", "123456789", 12.99),
+          )
         end
 
         it "has the expected structure with namespace" do
-          expect(described_class.new(namespace_prefix: "hurz" ).build("return", "123456789", 12.99)).to eq expect_namespaced_return_message("return", "123456789", 12.99, "hurz")
+          expect(described_class.new(namespace_prefix: "hurz").build("return", "123456789", 12.99)).to eq(
+            expect_namespaced_return_message("return", "123456789", 12.99, "hurz"),
+          )
         end
       end
 
       context "capture message" do
         it "has the expected structure" do
-          expect(described_class.new.build("return", "123456789", 12.99)).to eq expect_capture_message("return", "123456789", 12.99)
+          expect(described_class.new.build("return", "123456789", 12.99)).to eq(
+            expect_capture_message("return", "123456789", 12.99),
+          )
         end
       end
 
       context "void message" do
         it "has the expected structure" do
-          expect(described_class.new.build("void", "123456789")).to eq expect_void_message("void", "123456789")
+          expect(described_class.new.build("void", "123456789")).to eq(
+            expect_void_message("void", "123456789"),
+          )
         end
       end
     end
@@ -47,9 +55,9 @@ module Telecash
           "CreditCardTxType" => {
             "Type" => type,
           },
-          "Payment"=> {
-            "ChargeTotal"=>amount,
-            "Currency"=>978,
+          "Payment" => {
+            "ChargeTotal" => amount,
+            "Currency" => 978,
           },
           "TransactionDetails" => {
             "OrderId" => id,
@@ -64,9 +72,9 @@ module Telecash
           "CreditCardTxType" => {
             "Type" => type,
           },
-          "Payment"=> {
-            "ChargeTotal"=>amount,
-            "Currency"=>978,
+          "Payment" => {
+            "ChargeTotal" => amount,
+            "Currency" => 978,
           },
           "TransactionDetails" => {
             "OrderId" => id,
@@ -81,9 +89,9 @@ module Telecash
           "#{namespace}:CreditCardTxType" => {
             "#{namespace}:Type" => type,
           },
-          "#{namespace}:Payment"=> {
-            "#{namespace}:ChargeTotal"=>amount,
-            "#{namespace}:Currency"=>978,
+          "#{namespace}:Payment" => {
+            "#{namespace}:ChargeTotal" => amount,
+            "#{namespace}:Currency" => 978,
           },
           "#{namespace}:TransactionDetails" => {
             "#{namespace}:OrderId" => id,

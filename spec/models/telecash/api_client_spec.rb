@@ -29,7 +29,9 @@ module Telecash
 
           response = client.capture("transaction_id", 22.99)
 
-          expect(response.message).to eq "Function performed error-free - Y:SM0833:4515721339:YYYM:3908339911 - 84515721339"
+          expect(response.message).to eq(
+            "Function performed error-free - Y:SM0833:4515721339:YYYM:3908339911 - 84515721339",
+          )
         end
       end
 
@@ -50,7 +52,6 @@ module Telecash
           response = client.capture("transaction_id", 22.99)
 
           expect(response.success?).to be false
-
         end
 
         it "has the expected message" do
@@ -59,14 +60,15 @@ module Telecash
 
           response = client.capture("transaction_id", 22.99)
 
-          expect(response.message).to eq "SGS-010501: PostAuth already performed - N:-10501:PostAuth already performed - 84515721317"
-
+          expect(response.message).to eq(
+            "SGS-010501: PostAuth already performed - N:-10501:PostAuth already performed - 84515721317",
+          )
         end
       end
     end
 
     def mock_savon_success(fixture)
-      response_body = YAML.load(File.read(file_fixture(fixture)))
+      response_body = YAML.safe_load(File.read(file_fixture(fixture)), [Symbol])
       response = double("response", body: response_body)
       client = double("client")
       allow(client).to receive(:call).and_return(response)
@@ -86,10 +88,10 @@ module Telecash
       globals = Savon::GlobalOptions.new
 
       nori_options = {
-        :delete_namespace_attributes => globals[:delete_namespace_attributes],
-        :strip_namespaces            => globals[:strip_namespaces],
-        :convert_tags_to             => globals[:convert_response_tags_to],
-        :convert_attributes_to       => globals[:convert_attributes_to],
+        delete_namespace_attributes: globals[:delete_namespace_attributes],
+        strip_namespaces: globals[:strip_namespaces],
+        convert_tags_to: globals[:convert_response_tags_to],
+        convert_attributes_to: globals[:convert_attributes_to],
       }
 
       non_nil_nori_options = nori_options.reject { |_, value| value.nil? }

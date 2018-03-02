@@ -15,14 +15,13 @@ module Telecash
         handler = described_class.new
         create_tempfile = -> { handler.create("something") }
 
-        expect(create_tempfile).to change{handler.tempfiles.size}.from(0).to(1)
+        expect(create_tempfile).to change { handler.tempfiles.size }.from(0).to(1)
       end
 
       it "has the expected content" do
         tempfile = described_class.new.create("something")
 
         expect(File.read(tempfile.path)).to eq "something"
-
       end
     end
 
@@ -40,7 +39,7 @@ module Telecash
 
       it "clears the list of registered tempfiles" do
         handler = described_class.new
-        tempfile_path = handler.create("something").path
+        handler.create("something")
 
         handler.clear
 

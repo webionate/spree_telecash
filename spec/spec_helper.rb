@@ -1,6 +1,6 @@
-require 'rspec/rails'
-require 'rspec/active_model/mocks'
-require 'rspec/autorun'
+require "rspec/rails"
+require "rspec/active_model/mocks"
+require "rspec/autorun"
 
 Rails.backtrace_cleaner.remove_silencers!
 
@@ -8,11 +8,11 @@ Rails.backtrace_cleaner.remove_silencers!
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
 RSpec.configure do |config|
- config.mock_with :rspec do |mocks|
+  config.mock_with :rspec do |mocks|
     mocks.syntax = :expect
   end
- config.use_transactional_fixtures = true
- config.infer_base_class_for_anonymous_controllers = false
- config.order = "random"
- config.file_fixture_path = "spec/fixtures"
+  config.use_transactional_fixtures = true
+  config.infer_base_class_for_anonymous_controllers = false
+  config.order = "random"
+  config.file_fixture_path = "spec/fixtures"
 end

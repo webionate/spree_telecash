@@ -12,6 +12,6 @@ module SpreeTelecash
     MINOR = 0
     TINY  = 1
 
-    STRING = [MAJOR, MINOR, TINY].compact.join('.')
+    STRING = [MAJOR, MINOR, TINY].compact.join(".")
   end
 end

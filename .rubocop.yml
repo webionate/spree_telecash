@@ -4,6 +4,7 @@ AllCops:
     - "vendor/**/*"
     - "db/schema.rb"
     - "db/migrate/*.rb"
+    - "spec/dummy/**/*"
   UseCache: false
 Rails:
   Enabled: true
@@ -48,6 +49,9 @@ Layout/FirstMethodArgumentLineBreak:
                  Checks for a line break before the first argument in a
                  multi-line method call.
   Enabled: true
+Style/ClassAndModuleChildren:
+  Description: 'Checks style of children classes and modules.'
+  Enabled: false
 Style/GuardClause:
   Description: Check for conditionals that can be replaced with guard clauses
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-nested-conditionals
