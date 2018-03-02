@@ -72,9 +72,9 @@ module TelecashHelper
 
   def transaction_type_for(payment_method)
     if payment_method.auto_capture?
-      "preauth"
-    else
       "sale"
+    else
+      "preauth"
     end
   end
 end
