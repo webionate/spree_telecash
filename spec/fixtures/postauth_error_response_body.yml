@@ -1,0 +1,16 @@
+:fault:
+  :faultcode: "SOAP-ENV:Client"
+  :faultstring: "ProcessingException"
+  :detail:
+    :ipg_api_order_response:
+      :approval_code: "N:-10501:PostAuth already performed"
+      :commercial_service_provider: "TELECASH"
+      :error_message: "SGS-010501: PostAuth already performed"
+      :order_id: "B098123"
+      :ipg_transaction_id: "84515723554"
+      :payment_type: "CREDITCARD"
+      :transaction_result: "FAILED"
+      :transaction_time: "1519887631"
+      :"@xmlns:ipgapi": "http://ipg-online.com/ipgapi/schemas/ipgapi"
+      :"@xmlns:a1": "http://ipg-online.com/ipgapi/schemas/a1"
+      :"@xmlns:v1": "http://ipg-online.com/ipgapi/schemas/v1"

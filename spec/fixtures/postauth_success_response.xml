@@ -1,0 +1,28 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <SOAP-ENV:Header/>
+  <SOAP-ENV:Body>
+    <ipgapi:IPGApiOrderResponse xmlns:ipgapi="http://ipg-online.com/ipgapi/schemas/ipgapi" xmlns:a1="http://ipg-online.com/ipgapi/schemas/a1" xmlns:v1="http://ipg-online.com/ipgapi/schemas/v1">
+      <ipgapi:ApprovalCode>Y:SM0743:4515720673:YYYM:3907439827</ipgapi:ApprovalCode>
+      <ipgapi:AVSResponse>YYY</ipgapi:AVSResponse>
+      <ipgapi:Brand>VISA</ipgapi:Brand>
+      <ipgapi:Country>GBR</ipgapi:Country>
+      <ipgapi:CommercialServiceProvider>TELECASH</ipgapi:CommercialServiceProvider>
+      <ipgapi:OrderId>O1234567</ipgapi:OrderId>
+      <ipgapi:IpgTransactionId>84515720673</ipgapi:IpgTransactionId>
+      <ipgapi:PaymentType>CREDITCARD</ipgapi:PaymentType>
+      <ipgapi:ProcessorApprovalCode>SM0743</ipgapi:ProcessorApprovalCode>
+      <ipgapi:ProcessorReceiptNumber>9827</ipgapi:ProcessorReceiptNumber>
+      <ipgapi:ProcessorCCVResponse>M</ipgapi:ProcessorCCVResponse>
+      <ipgapi:ProcessorReferenceNumber>880743</ipgapi:ProcessorReferenceNumber>
+      <ipgapi:ProcessorResponseCode>00</ipgapi:ProcessorResponseCode>
+      <ipgapi:ProcessorResponseMessage>Function performed error-free</ipgapi:ProcessorResponseMessage>
+      <ipgapi:ProcessorTraceNumber>390743</ipgapi:ProcessorTraceNumber>
+      <ipgapi:ReferencedTDate>1519825116</ipgapi:ReferencedTDate>
+      <ipgapi:TDate>1519826009</ipgapi:TDate>
+      <ipgapi:TDateFormatted>2018.02.28 14:53:29 (CET)</ipgapi:TDateFormatted>
+      <ipgapi:TerminalID>54000015</ipgapi:TerminalID>
+      <ipgapi:TransactionResult>APPROVED</ipgapi:TransactionResult>
+      <ipgapi:TransactionTime>1519826009</ipgapi:TransactionTime>
+    </ipgapi:IPGApiOrderResponse>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

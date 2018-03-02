@@ -1,12 +1,14 @@
 ---
 de:
+  spree:
+    wsdl: WSDL URL
+    api_user: API User
+    api_password: API Passwort
+    namespace:  Namespace
+    ssl_certificate: SSL Zertifikat
+    ssl_certificate_key: SSL Zertifikat Schlüssel
+    ssl_certificate_key_password: SSL Zertifikat Schlüsselpasswort
   telecash:
-    choose_telecash_payment_method: Bitte Zahlungsart wählen
-    settings:
-      url: "Telecash URL"
-      store: "Telecash Store Name"
-      secret: "Shared Secret"
-      telecash_settings: "Telecash Einstellungen"
     payment_method:
       a: American Express
       c: Diners

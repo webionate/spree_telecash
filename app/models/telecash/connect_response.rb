@@ -8,6 +8,18 @@ module Telecash
       create(map_params(response_params))
     end
 
+    def actions
+      %w(capture refund void)
+    end
+
+    def can_capture?(payment)
+      payment.pending? || payment.checkout?
+    end
+
+    def can_void?(payment)
+      !payment.void?
+    end
+
     def success?
       approval_code.present? && approval_code.first == "Y"
     end

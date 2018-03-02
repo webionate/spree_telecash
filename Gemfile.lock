@@ -70,11 +70,15 @@ PATH
   remote: .
   specs:
     spree_telecash (0.0.1)
+      activemerchant
       coffee-script
+      payeezy
+      savon
       spree_backend (>= 3.1.0, < 4.0)
       spree_core (>= 3.1.0, < 4.0)
       spree_extension
       spree_frontend (>= 3.1.0, < 4.0)
+      spree_gateway (>= 3.1.0, < 4.0)
 
 GEM
   remote: https://rubygems.org/
@@ -127,7 +131,11 @@ GEM
       activerecord (>= 3.0)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
+    akami (1.3.1)
+      gyoku (>= 0.4.0)
+      nokogiri
     arel (8.0.0)
+    ast (2.4.0)
     autoprefixer-rails (7.2.5)
       execjs
     awesome_nested_set (3.1.4)
@@ -170,6 +178,7 @@ GEM
       warden (~> 1.2.3)
     devise-encryptable (0.2.0)
       devise (>= 2.1.0)
+    diff-lcs (1.3)
     erubi (1.7.0)
     execjs (2.7.0)
     ffaker (2.8.1)
@@ -178,9 +187,14 @@ GEM
       activerecord (>= 4.0.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    gyoku (1.3.1)
+      builder (>= 2.1.2)
     hashdiff (0.3.7)
     highline (1.6.21)
     htmlentities (4.3.4)
+    httpi (2.4.3)
+      rack
+      socksify
     i18n (0.9.4)
       concurrent-ruby (~> 1.0)
     jquery-rails (4.3.1)
@@ -189,6 +203,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
+    json (1.8.6)
     kaminari (1.0.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.0.1)
@@ -221,6 +236,7 @@ GEM
     nio4r (2.2.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
+    nori (2.6.0)
     orm_adapter (0.5.0)
     paperclip (5.2.1)
       activemodel (>= 4.2.0)
@@ -228,12 +244,19 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (~> 0.3.0)
+    parallel (1.12.1)
     paranoia (2.3.1)
       activerecord (>= 4.0, < 5.2)
+    parser (2.4.0.2)
+      ast (~> 2.3)
+    payeezy (1.1.0)
+      json (~> 1.8.1)
+      rest-client (~> 1.4)
     pg (1.0.0)
     polyamorous (1.3.3)
       activerecord (>= 3.0)
     polyglot (0.3.5)
+    powerpack (0.1.1)
     premailer (1.11.1)
       addressable
       css_parser (>= 1.6.0)
@@ -288,16 +311,59 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
+    rspec-activemodel-mocks (1.0.3)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
+      rspec-mocks (>= 2.99, < 4.0)
+    rspec-core (3.7.1)
+      rspec-support (~> 3.7.0)
+    rspec-expectations (3.7.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.7.0)
+    rspec-mocks (3.7.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.7.0)
+    rspec-rails (3.7.2)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 3.7.0)
+      rspec-expectations (~> 3.7.0)
+      rspec-mocks (~> 3.7.0)
+      rspec-support (~> 3.7.0)
+    rspec-support (3.7.1)
+    rubocop (0.52.1)
+      parallel (~> 1.10)
+      parser (>= 2.4.0.2, < 3.0)
+      powerpack (~> 0.1)
+      rainbow (>= 2.2.2, < 4.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (~> 1.0, >= 1.0.1)
+    ruby-progressbar (1.9.0)
     safe_yaml (1.0.4)
     sass (3.5.5)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
+    savon (2.12.0)
+      akami (~> 1.2)
+      builder (>= 2.1.2)
+      gyoku (~> 1.2)
+      httpi (~> 2.3)
+      nokogiri (>= 1.8.1)
+      nori (~> 2.4)
+      wasabi (~> 3.4)
     select2-rails (3.5.9.1)
       thor (~> 0.14)
+    socksify (1.7.1)
     spree_extension (0.0.5)
       activerecord (>= 4.2)
+    spree_gateway (3.3.2)
+      spree_core (>= 3.1.0, < 4.0)
+      spree_extension
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -305,6 +371,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    sqlite3 (1.3.13)
     state_machines (0.5.0)
     state_machines-activemodel (0.5.0)
       activemodel (>= 4.1, < 5.2)
@@ -321,6 +388,7 @@ GEM
       tzinfo
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
+    unicode-display_width (1.3.0)
     versioncake (3.3.0)
       actionpack (>= 3.2)
       activesupport (>= 3.2)
@@ -328,6 +396,9 @@ GEM
       tzinfo
     warden (1.2.7)
       rack (>= 1.0)
+    wasabi (3.5.0)
+      httpi (~> 2.0)
+      nokogiri (>= 1.4.2)
     webmock (3.3.0)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
@@ -342,9 +413,13 @@ PLATFORMS
 DEPENDENCIES
   pg
   rails-controller-testing
+  rspec-activemodel-mocks
+  rspec-rails
+  rubocop
   spree!
   spree_auth_devise!
   spree_telecash!
+  sqlite3
   webmock (>= 2.3.1)
 
 BUNDLED WITH

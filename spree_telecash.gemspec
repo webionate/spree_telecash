@@ -19,13 +19,22 @@ Gem::Specification.new do |s|
   # s.files       = `git ls-files`.split("\n")
   # s.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.require_path = 'lib'
+  s.test_files = Dir["spec/**/*"]
+
   s.requirements << 'none'
 
   spree_version = '>= 3.1.0', '< 4.0'
   s.add_dependency "activemerchant"
+  s.add_dependency "payeezy"
+  s.add_dependency "savon"
   s.add_dependency 'spree_core', spree_version
   s.add_dependency 'spree_backend', spree_version
   s.add_dependency 'spree_frontend', spree_version
+  s.add_dependency "spree_gateway", spree_version
   s.add_dependency 'spree_extension'
   s.add_dependency "coffee-script"
+  s.add_development_dependency 'rubocop'
+  s.add_development_dependency "sqlite3"
+  s.add_development_dependency 'rspec-activemodel-mocks'
+  s.add_development_dependency 'rspec-rails'
 end

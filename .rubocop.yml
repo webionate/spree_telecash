@@ -256,3 +256,5 @@ Lint/LiteralInInterpolation:
   Enabled: false
 Metrics/BlockLength:
   Enabled: false
+Naming/VariableNumber:
+  Enabled: false

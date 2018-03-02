@@ -14,13 +14,13 @@ module Spree
         end
       end
 
-      redirect_to checkout_state_path(:complete)
+      redirect_to checkout_state_path(:confirm)
     end
 
     private
 
     def telecash_payment_method
-      Spree::PaymentMethod.where(type: Spree::Gateway::TelecashCreditcard.name).first
+      Spree::PaymentMethod.where(type: Spree::Gateway::Telecash.name).first
     end
   end
 end
