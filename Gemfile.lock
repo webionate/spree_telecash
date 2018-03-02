@@ -72,7 +72,6 @@ PATH
     spree_telecash (0.0.1)
       activemerchant
       coffee-script
-      payeezy
       savon
       spree_backend (>= 3.1.0, < 4.0)
       spree_core (>= 3.1.0, < 4.0)
@@ -203,7 +202,6 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
-    json (1.8.6)
     kaminari (1.0.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.0.1)
@@ -249,9 +247,6 @@ GEM
       activerecord (>= 4.0, < 5.2)
     parser (2.4.0.2)
       ast (~> 2.3)
-    payeezy (1.1.0)
-      json (~> 1.8.1)
-      rest-client (~> 1.4)
     pg (1.0.0)
     polyamorous (1.3.3)
       activerecord (>= 3.0)
@@ -311,8 +306,6 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
-    rest-client (1.6.7)
-      mime-types (>= 1.16)
     rspec-activemodel-mocks (1.0.3)
       activemodel (>= 3.0)
       activesupport (>= 3.0)
