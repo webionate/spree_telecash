@@ -37,6 +37,17 @@ module Spree
       )
     end
 
+    def purchase(_money_in_cents, source, _gateway_options)
+      Rails.logger.info "Received call to purchase, examining source..."
+      ActiveMerchant::Billing::Response.new(
+        source.success?,
+        source.status,
+        {},
+        error_code: source.approval_code,
+        authorization: source.transaction_id,
+      )
+    end
+
     def capture(amount, transaction_id, _gateway_options)
       Rails.logger.info "Received call to capture, with amount: #{amount}, transaction_id: #{transaction_id}"
       api_client.capture(transaction_id, amount)

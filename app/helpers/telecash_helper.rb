@@ -6,7 +6,7 @@ module TelecashHelper
     store_id = payment_method.preferences[:store]
     formatted_date = Time.current.strftime("%Y:%m:%d-%H:%M:%S")
     uri.query = URI.encode_www_form(
-      txntype: "preauth",
+      txntype: transaction_type_for(payment_method),
       timezone: "Europe/Berlin",
       txndatetime: formatted_date,
       hash_algorithm: "SHA256",
@@ -68,5 +68,13 @@ module TelecashHelper
     data_string = params.map(&:to_s).join
     hex_data = data_string.unpack("H*").first
     Digest::SHA256.hexdigest(hex_data)
+  end
+
+  def transaction_type_for(payment_method)
+    if payment_method.auto_capture?
+      "preauth"
+    else
+      "sale"
+    end
   end
 end
