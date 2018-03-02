@@ -1,17 +1,15 @@
-- if needs_telecash_payment?(@order, payment_method)
+#telecash-payment-method-selection{ data: { "payment_method_id" => payment_method.id }}
 
-  %p
-    = "#{t('telecash.choose_telecash_payment_method')}:"
+  - if needs_telecash_payment?(@order, payment_method)
+    .list-group
+      - telecash_payment_methods(payment_method).each_with_index do |method, index|
+        .list-group-item
+          = radio_button_tag "telecash_payment_method", telecash_payment_link(@order, payment_method, method), index == 0, id: "telecash_payment_method_#{method}"
+          = label_tag "telecash_payment_method_#{method}", t("telecash.payment_method.#{method}")
 
-  .list-group#telecash-payment-method-selection
-    - telecash_payment_methods(payment_method).each do |method|
-      .list-group-item
-        = radio_button_tag "telecash_payment_method", telecash_payment_link(@order, payment_method, method), true, id: "telecash_payment_method_#{method}"
-        = label_tag "telecash_payment_method_#{method}", t("telecash.payment_method.#{method}")
+    - if Rails.env.development?
+      %br
+      = link_to "Ignore TeleCash", telecash_success_link(@order), method: :post
 
-  =# link_to "Telecash", telecash_payment_link(@order, payment_method, "dummy"), method: :post
-
-  = link_to "Telecash Success", telecash_success_link(@order), method: :post
-
--else
-  %p="Telecash Zahlung erfolgreich, bitte weitergehen."
+  -else
+    %p= t("telecash.no_payment_required")
