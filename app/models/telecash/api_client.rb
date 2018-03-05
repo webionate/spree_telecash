@@ -1,3 +1,5 @@
+require "savon"
+
 module Telecash
   class ApiClient
     NAMESPACE_PREFIX = "v1".freeze
