@@ -7,7 +7,7 @@ module Telecash
       @api_user = gateway_options[:api_user]
       @api_password = gateway_options[:api_password]
       @ssl_certificate = gateway_options[:ssl_certificate]
-      @ssl_certificate_key = gateway_option[:ssl_certificate_key]
+      @ssl_certificate_key = gateway_options[:ssl_certificate_key]
       @ssl_certificate_key_password = gateway_options[:ssl_certificate_key_password]
     end
 
@@ -40,11 +40,11 @@ module Telecash
 
     def process_source(payment_source)
       ActiveMerchant::Billing::Response.new(
-        source.success?,
-        source.status,
+        payment_source.success?,
+        payment_source.status,
         {},
-        error_code: source.approval_code,
-        authorization: source.transaction_id,
+        error_code: payment_source.approval_code,
+        authorization: payment_source.transaction_id,
       )
     end
 
