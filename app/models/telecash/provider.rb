@@ -26,9 +26,10 @@ module Telecash
       api_client.capture(transaction_id, amount)
     end
 
-    def credit(amount, transaction_id, _gateway_options)
-      Rails.logger.info "Received call to refund, with amount: #{amount}, transaction_id: #{transaction_id}"
-      api_client.refund(transaction_id, amount)
+    def credit(money_in_cents, transaction_id, options)
+      originator = options[:originator]
+      Rails.logger.info "Received call to credit, with money_in_cents: #{money_in_cents}, transaction_id: #{transaction_id} and options: #{options}"
+      api_client.refund(order_number_from(originator), money_in_cents / 100.00)
     end
 
     def void(amount, transaction_id, _gateway_options)
@@ -46,6 +47,14 @@ module Telecash
         error_code: payment_source.approval_code,
         authorization: payment_source.transaction_id,
       )
+    end
+
+    def order_number_from(originator)
+      return if originator.nil?
+      if originator.is_a? Spree::Refund
+
+        originator.payment.order.number
+      end
     end
 
     def api_client

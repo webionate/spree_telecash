@@ -23,10 +23,10 @@ module Telecash
       )
     end
 
-    def refund(transaction_id, amount)
+    def refund(order_number, amount)
       execute_soap_call(
         :ipg_api_order,
-        Message.new(namespace_prefix: NAMESPACE_PREFIX).build("return", transaction_id, amount),
+        Message.new(namespace_prefix: NAMESPACE_PREFIX).build("return", order_number, amount),
       )
     end
 
