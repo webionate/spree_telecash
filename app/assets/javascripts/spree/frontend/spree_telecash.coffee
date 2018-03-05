@@ -12,16 +12,13 @@ SpreeTeleCash =
 
   toggleSaveAndContinueButton: ->
     if SpreeTeleCash.selected()
-      console.log "telecash"
       $("form#checkout_form_payment input[type=submit]").hide()
       $("[data-hook='continue-with-telecash']").show()
     else
-      console.log "other"
       $("form#checkout_form_payment input[type=submit]").show()
       $("[data-hook='continue-with-telecash']").hide()
 
   setPaymentMethodURL: (url) ->
-    console.log url
     $("[data-hook='continue-with-telecash']").attr("href", url)
 
   selectedPaymentMethodURL: ->
