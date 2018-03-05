@@ -33,6 +33,15 @@ module Telecash
             "Function performed error-free - Y:SM0833:4515721339:YYYM:3908339911 - 84515721339",
           )
         end
+
+        it "has the expected authorization" do
+          mock_savon_success("postauth_success_response_body.yml")
+          client = ApiClient.new("example.wsdl", "user", "password", "cert", "cert_key", "cert_key_pass")
+
+          response = client.capture("transaction_id", 22.99)
+
+          expect(response.authorization).to eq("84515721339")
+        end
       end
 
       context "with a soap error" do
@@ -63,6 +72,15 @@ module Telecash
           expect(response.message).to eq(
             "SGS-010501: PostAuth already performed - N:-10501:PostAuth already performed - 84515721317",
           )
+        end
+
+        it "has the expected authorization" do
+          mock_savon_fault("postauth_error_response.xml")
+          client = ApiClient.new("example.wsdl", "user", "password", "cert", "cert_key", "cert_key_pass")
+
+          response = client.capture("transaction_id", 22.99)
+
+          expect(response.authorization).to eq("84515721317")
         end
       end
     end

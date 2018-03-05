@@ -50,7 +50,10 @@ module Telecash
 
     def process_savon_response(hash)
       Rails.logger.info("Processing response body: #{hash}")
-      ActiveMerchant::Billing::Response.new(success?(hash), build_response_message(hash))
+      ActiveMerchant::Billing::Response.new(
+        success?(hash),
+        build_response_message(hash), {},
+        authorization: transaction_id(hash))
     end
 
     def success?(hash)
@@ -61,8 +64,11 @@ module Telecash
       message = hash.dig(:ipg_api_order_response, :processor_response_message)
       error_message = hash.dig(:ipg_api_order_response, :error_message)
       approval_code = hash.dig(:ipg_api_order_response, :approval_code)
-      transaction_id = hash.dig(:ipg_api_order_response, :ipg_transaction_id)
-      [message, error_message, approval_code, transaction_id].delete_if(&:blank?).join(" - ")
+      [message, error_message, approval_code, transaction_id(hash)].delete_if(&:blank?).join(" - ")
+    end
+
+    def transaction_id(hash)
+      hash.dig(:ipg_api_order_response, :ipg_transaction_id)
     end
 
     def savon_client
