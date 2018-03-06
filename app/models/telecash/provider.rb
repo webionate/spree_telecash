@@ -24,9 +24,9 @@ module Telecash
       capture(money_in_cents, source.order_number, gateway_options)
     end
 
-    def capture(amount, order_id, _gateway_options)
-      Rails.logger.info "Received call to capture, with amount: #{amount}, transaction_id: #{order_id}"
-      api_client.capture(order_id, amount)
+    def capture(money_in_cents, order_id, _gateway_options)
+      Rails.logger.info "Received call to capture, with money_in_cents: #{money_in_cents}, transaction_id: #{order_id}"
+      api_client.capture(order_id, money_in_cents / 100.00)
     end
 
     def credit(money_in_cents, transaction_id, options)
