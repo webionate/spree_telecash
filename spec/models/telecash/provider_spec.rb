@@ -60,20 +60,14 @@ module Telecash
 
     describe "#purchase" do
       context "with success source" do
-        it "returns a billing response for the source" do
-          provider = described_class.new(gateway_options)
+        it "captures via the source" do
+          billing_response = double("billing_response")
+          mock_api_client(:capture, billing_response)
 
+          provider = described_class.new(gateway_options)
           response = provider.purchase(10000, success_source, {})
 
-          expect(response).to be_a ActiveMerchant::Billing::Response
-        end
-
-        it "is successful" do
-          provider = described_class.new(gateway_options)
-
-          response = provider.purchase(10000, success_source, {})
-
-          expect(response.success?).to be true
+          expect(response).to eq billing_response
         end
       end
 

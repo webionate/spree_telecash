@@ -16,14 +16,17 @@ module Telecash
       process_source(source)
     end
 
-    def purchase(_money_in_cents, source, _gateway_options)
-      Rails.logger.info "Received call to purchase, examining source..."
-      process_source(source)
+    def purchase(money_in_cents, source, gateway_options)
+      Rails.logger.info "Received call to purchase with money #{money_in_cents}, source: #{source.inspect}, gateway_options #{gateway_options}"
+      response = process_source(source)
+      return response unless response.success?
+
+      capture(money_in_cents, source.order_number, gateway_options)
     end
 
-    def capture(amount, transaction_id, _gateway_options)
-      Rails.logger.info "Received call to capture, with amount: #{amount}, transaction_id: #{transaction_id}"
-      api_client.capture(transaction_id, amount)
+    def capture(amount, order_id, _gateway_options)
+      Rails.logger.info "Received call to capture, with amount: #{amount}, transaction_id: #{order_id}"
+      api_client.capture(order_id, amount)
     end
 
     def credit(money_in_cents, transaction_id, options)
