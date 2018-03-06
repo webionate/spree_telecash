@@ -57,7 +57,7 @@ module Telecash
           },
           "Payment" => {
             "ChargeTotal" => amount,
-            "Currency" => 978,
+            "Currency" => iso_currency_for("USD"),
           },
           "TransactionDetails" => {
             "OrderId" => id,
@@ -74,7 +74,7 @@ module Telecash
           },
           "Payment" => {
             "ChargeTotal" => amount,
-            "Currency" => 978,
+            "Currency" => iso_currency_for("USD"),
           },
           "TransactionDetails" => {
             "OrderId" => id,
@@ -91,13 +91,17 @@ module Telecash
           },
           "#{namespace}:Payment" => {
             "#{namespace}:ChargeTotal" => amount,
-            "#{namespace}:Currency" => 978,
+            "#{namespace}:Currency" => iso_currency_for("USD"),
           },
           "#{namespace}:TransactionDetails" => {
             "#{namespace}:OrderId" => id,
           },
         },
       }
+    end
+
+    def iso_currency_for(string)
+      Money::Currency.new(string).iso_numeric
     end
   end
 end

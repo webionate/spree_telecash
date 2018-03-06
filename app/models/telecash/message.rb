@@ -24,7 +24,7 @@ module Telecash
       Hash.new.tap do |hash|
         hash[prefixed("CreditCardTxType")] = { prefixed("Type") => type }
         if amount.present?
-          hash[prefixed("Payment")] = { prefixed("ChargeTotal") => amount, prefixed("Currency") => 978 }
+          hash[prefixed("Payment")] = { prefixed("ChargeTotal") => amount, prefixed("Currency") => lookup_currency }
         end
         hash[prefixed("TransactionDetails")] = { prefixed(IDENTIFIER_BY_TRANSACTION_TYPE[type]) => id }
       end
@@ -32,6 +32,10 @@ module Telecash
 
     def prefixed(element)
       [namespace_prefix, element].delete_if(&:blank?).join(":")
+    end
+
+    def lookup_currency
+       Money::Currency.new(Spree::Config.currency).iso_numeric
     end
   end
 end
