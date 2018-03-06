@@ -10,11 +10,11 @@ module TelecashHelper
       timezone: "Europe/Berlin",
       txndatetime: formatted_date,
       hash_algorithm: "SHA256",
-      hash: build_hash(store_id, formatted_date, order.total.to_s, "978", payment_method.preferences[:secret]),
+      hash: build_hash(store_id, formatted_date, order.total.to_s, lookup_currency, payment_method.preferences[:secret]),
       storename: store_id,
       mode: "payonly",
       chargetotal: order.total.to_s,
-      currency: "978",
+      currency: lookup_currency,
       oid: order.number,
       paymentMethod: telecash_payment_method,
       responseSuccessURL: telecash_connect_response_url,
@@ -47,7 +47,7 @@ module TelecashHelper
       response_hash: "5e4a5e340466aa4bb46599bfbbd4ba1b169e0d4a08492a052cabe1f353c2c070",
       endpointTransactionId: "9MN61332EU967431F",
       chargetotal: order.total.to_s.tr(".", ","),
-      currency: "978",
+      currency: lookup_currency,
       processor_response_code: "Completed",
       terminal_id: "54000015",
       tdate: "1518613130",
@@ -69,5 +69,9 @@ module TelecashHelper
     data_string = params.map(&:to_s).join
     hex_data = data_string.unpack("H*").first
     Digest::SHA256.hexdigest(hex_data)
+  end
+
+  def lookup_currency
+    Money::Currency.new(Spree::Config.currency).iso_numeric
   end
 end
