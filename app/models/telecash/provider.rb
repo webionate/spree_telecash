@@ -35,8 +35,8 @@ module Telecash
       api_client.refund(order_number_from(originator), money_in_cents / 100.00)
     end
 
-    def void(amount, transaction_id, _gateway_options)
-      Rails.logger.info "Received call to void, with amount: #{amount}, transaction_id: #{transaction_id}"
+    def void(transaction_id, _gateway_options)
+      Rails.logger.info "Received call to void, with transaction_id: #{transaction_id} and gateway_options: #{_gateway_options}"
       api_client.void(transaction_id)
     end
 

@@ -123,7 +123,7 @@ module Telecash
         billing_response = double("billing_response")
         mock_api_client(:void, billing_response)
 
-        response = provider.void(10000, "hurz", {})
+        response = provider.void("hurz", {})
 
         expect(response).to eq billing_response
       end
