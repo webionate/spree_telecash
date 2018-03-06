@@ -9,12 +9,9 @@ de:
     ssl_certificate_key: SSL Zertifikat Schlüssel
     ssl_certificate_key_password: SSL Zertifikat Schlüsselpasswort
   telecash:
+    approval_code: Genehmigungscode
     no_payment_required: Telecash Zahlung erfolgreich. Bitte klicken Sie auf 'Weiter'.
-    settings:
-      url: "Telecash URL"
-      store: "Telecash Store Name"
-      secret: "Shared Secret"
-      telecash_settings: "Telecash Einstellungen"
+    order_number: Bestellnummer
     payment_method:
       a: American Express
       c: Diners
@@ -25,3 +22,12 @@ de:
       paypal: PayPal
       sofort: Sofort
       v: Visa
+    processor_response_code: Zahlungsprozessor Antwortcode
+    settings:
+      url: "Telecash URL"
+      store: "Telecash Store Name"
+      secret: "Shared Secret"
+      telecash_settings: "Telecash Einstellungen"
+    status: Status
+    transaction: Transaktion
+    transaction_id: Transaktions ID

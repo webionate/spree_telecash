@@ -1,1 +1,26 @@
-_telecash.html.haml
+%fieldset{"data-hook" => "telecash"}
+  %legend{:align => "center"}= t(:transaction, :scope => :telecash)
+  .alpha.six.columns
+    %dl
+      %dt
+        = t(:order_number, :scope => :telecash)
+        \:
+      %dd= payment.source.order_number
+      %dt
+        = t(:transaction_id, :scope => :telecash)
+        \:
+      %dd= payment.source.transaction_id
+      %dt
+        = t(:status, :scope => :telecash)
+        \:
+      %dd= payment.source.status
+  .alpha.six.columns
+    %dl
+      %dt
+        = t(:approval_code, :scope => :telecash)
+        \:
+      %dd= payment.source.approval_code
+      %dt
+        = t(:processor_response_code, :scope => :telecash)
+        \:
+      %dd= payment.source.processor_response_code
