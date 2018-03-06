@@ -24,7 +24,8 @@ module TelecashHelper
   end
 
   def needs_telecash_payment?(order, payment_method)
-    order.payments.where(payment_method: payment_method).count.zero?
+    telecash_payment = order.payments.where(payment_method: payment_method).first
+    telecash_payment.nil? || telecash_payment.failed? || telecash_payment.invalid?
   end
 
   def telecash_success_link(order)
