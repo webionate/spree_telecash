@@ -9,7 +9,7 @@ module Telecash
     end
 
     def actions
-      %w(capture refund void)
+      %w(capture void)
     end
 
     def can_capture?(payment)
